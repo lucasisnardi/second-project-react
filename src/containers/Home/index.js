@@ -1,9 +1,8 @@
 import React, { useState, useRef } from "react";
 
 import axios from "axios";
-import Burger from "./assets/burger 1.svg";
 
-
+import Burger from "../../assets/burger 1.svg";
 
 import {
   Container,
@@ -12,8 +11,7 @@ import {
   InputLabel,
   Input,
   Button,
-  User,
-} from "./styles";
+ } from "./styles";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -21,21 +19,14 @@ function App() {
   const inputclientName = useRef();
 
   async function addNewUser() {
+    const { data: newUser } = await axios.post("http://localhost:3001/users",
+      {
+        order: inputOrder.current.value,
+        clientName: inputclientName.current.value,
+      });
 
-    const data = await axios.post("http://localhost:3001/users", {
-      pedido: inputOrder.current.value,
-      name: inputclientName.current.value,
-    });
-      console.log(data)
-  //   setUsers([
-  //     ...users,
-  //     {
-  //       id: Math.random(),
-  //       pedido: inputOrder.current.value,
-  //       name: inputclientName.current.value,
-  //     },
-  //   ]);
- }
+    setUsers([...users, newUser]);
+  }
 
   return (
     <Container>
@@ -53,16 +44,7 @@ function App() {
 
         Novo Pedido
       </Button>
-      <ul>
-        {users.map((user) => (
-          <User Key={user.id}>
-            <p>{user.order}</p> <p>{user.clientName}</p> <p>{user.price}</p> <p>{user.status}</p>
-            
-          </User>
-
-        ))}
-      </ul>
-
+   
     </Container>
   );
 }

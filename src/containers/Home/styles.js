@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import Background from './assets/background1.svg'
+import Background from '../../assets/background1.svg'
 
 export const Container = styled.div`
     background: url("${Background}");
@@ -61,6 +61,7 @@ export const Button = styled.button`
     align-items: center;
     background: #D93856;
     border: none;
+    margin-top: 130px;
 
     font-size: 17px;
     font-style: normal;
@@ -79,6 +80,3 @@ export const Button = styled.button`
     }
 `;
 
-export const User = styled.li `
-    
-`
