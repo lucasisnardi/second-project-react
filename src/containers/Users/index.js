@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import axios from "axios";
 
@@ -11,13 +11,16 @@ import {
   Container,
   H1,
   Image,
+  Input,
+  InputLabel,
   Button,
   User,
 } from "./styles";
 
 function Users() {
   const [users, setUsers] = useState([]);
- 
+  const inputOrder = useRef();
+  const inputclientName = useRef();
   
   useEffect(() => {
     async function fetchUsers() {
@@ -41,6 +44,12 @@ function Users() {
       <Image alt="logo-imagem" src={Burger} />
 
       <H1>Pedidos</H1>
+      <InputLabel></InputLabel>
+      <Input ref={inputOrder} placeholder="1 Coca-Cola, 1-X Salada Steven Jobs" /> 
+
+      <InputLabel></InputLabel>
+      <Input ref={inputclientName} placeholder="1 Batata Grande, 1 X-Bacon, 
+      2 Coca-Colas Light" />
 
       <ul>
         {users.map((user) => (
@@ -53,7 +62,7 @@ function Users() {
 
         ))}
       </ul>
-      <Button>
+      <Button to="/">
         Voltar
      </Button>
     </Container>

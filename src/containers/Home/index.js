@@ -40,11 +40,11 @@ function App() {
       <InputLabel>Nome do Cliente</InputLabel>
       <Input ref={inputclientName} placeholder="Steve Jobs" />
 
-      <Button onClick={addNewUser}>
+      <Button to="/usuarios" onClick={addNewUser}>
 
         Novo Pedido
       </Button>
-   
+       
     </Container>
   );
 }
